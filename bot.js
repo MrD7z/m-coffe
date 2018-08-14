@@ -10,12 +10,11 @@ const jimp = require('jimp');
 const moment = require("moment");
 
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
-const prefix = '#';
+const prefix = '^';
 
 
 client.on('ready', function() {
 	console.log(`i am ready ${client.user.username}`);
-	client.user.setActivity('Coffe',{type: 'WATCHING'});
 
 
 
