@@ -1,13 +1,17 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
-const ytdl = require('ytdl-core');
-const request = require('request');
-const fs = require('fs');
+const Discord = require("discord.js");
+const ytdl = require("ytdl-core");
+const { Client, Util } = require('discord.js');
 const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
-const Canvas = require('canvas');
-const jimp = require('jimp');
-const moment = require("moment");
+const YouTube = require('simple-youtube-api');
+const queue = new Map();
+const client = new Discord.Client();
+
+
+
+
+
+
 
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
 const prefix = '^';
