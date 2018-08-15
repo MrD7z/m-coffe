@@ -5,15 +5,29 @@ const request = require('request');
 const fs = require('fs');
 const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
-const Canvas = require('canvas');
 const jimp = require('jimp');
+const superagent = require('superagent');
 const moment = require("moment");
 
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
-const prefix = '3';
+const prefix = '^';
 client.login(process.env.TOKEN);
+
 client.on('ready', function() {
 	console.log(`i am ready ${client.user.username}`);
+client.user.setGame('^help');
+
+
+
+  
+
+//   setInterval(function(){
+    //    client.guilds.get("456623609016877067").roles.find("name","R-1").edit({
+    //        color : "RANDOM"
+    //   });
+ //   },10000)
+
+
 
 
 
