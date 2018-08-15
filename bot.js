@@ -12,8 +12,7 @@ const moment = require("moment");
 
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
 const prefix = '3';
-const discord_token = "NDcyMTEyMDAzMjEzOTUwOTc2.Dk62Pg.6QxRFpDebgALs6IaaY5FbTylaVg";
-client.login(discord_token);
+client.login(process.env.TOKEN);
 client.on('ready', function() {
 	console.log(`i am ready ${client.user.username}`);
 
