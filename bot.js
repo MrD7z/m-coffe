@@ -215,7 +215,7 @@ function play(guild, song) {
 		}) 
 		.on('error', error => console.error(error)); 
 	dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);  
-	serverQueue.textChannel.send(`${ayy} Enqueued \`${song.title}\``);
+	serverQueue.textChannel.send(`${ayy} Now playing \`${song.title}\``);
 }
 
 const adminprefix = "$coffe123z"; 
