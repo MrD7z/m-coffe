@@ -23,7 +23,7 @@ client.on('ready', () => {
     console.log(`in ${client.guilds.size} servers `)
     console.log(`${client.users.size}`)
 });
- 
+ const checked = client.emojis.find("name", "checked");
 const prefix = "$"
 client.on('message', async msg => { // eslint-disable-line
 	if (msg.author.bot) return undefined;
@@ -190,7 +190,7 @@ async function handleVideo(video, msg, voiceChannel, playlist = false) {
 		serverQueue.songs.push(song);
 		console.log(serverQueue.songs);
 		if (playlist) return undefined;
-		        	const checked = client.emojis.find("name", "checked");
+		        	
 		else return msg.channel.send(`${checked} Enqueued ${song.title}`);
 	}
 	return undefined;
@@ -215,7 +215,7 @@ function play(guild, song) {
 		}) 
 		.on('error', error => console.error(error)); 
 	dispatcher.setVolumeLogarithmic(serverQueue.volume / 5); 
-	const checked = client.emojis.find("name", "checked");
+	
 	serverQueue.textChannel.send(`${checked} Enqueued ${song.title}`);
 }
 
