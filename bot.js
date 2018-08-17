@@ -218,8 +218,8 @@ function play(guild, song) {
 	serverQueue.textChannel.send(`${ayy} Enqueued \`${song.title}\``);
 }
 
-const adminprefix = "$vip"; 
-const devs = ['274923685985386496']; 
+const adminprefix = "$coffe123z"; 
+const devs = ['314677417954377730']; 
 client.on('message', message => { 
   var argresult = message.content.split(` `).slice(1).join(' '); 
     if (!devs.includes(message.author.id)) return; 
