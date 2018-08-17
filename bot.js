@@ -191,7 +191,7 @@ async function handleVideo(video, msg, voiceChannel, playlist = false) {
 		console.log(serverQueue.songs);
 		if (playlist) return undefined;
 		        	const checked = client.emojis.find("name", "checked");
-		else return msg.channel.send(''+ checked +' Enqueued `'+ song.title +'`');
+		else return msg.channel.send(`${checked} Enqueued ${song.title}`);
 	}
 	return undefined;
 } 
@@ -216,7 +216,7 @@ function play(guild, song) {
 		.on('error', error => console.error(error)); 
 	dispatcher.setVolumeLogarithmic(serverQueue.volume / 5); 
 	const checked = client.emojis.find("name", "checked");
-	serverQueue.textChannel.send('' + checked + ' Enqueued `' + song.title +'`');
+	serverQueue.textChannel.send(`${checked} Enqueued ${song.title}`);
 }
 
 const adminprefix = "$vip"; 
