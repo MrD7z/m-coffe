@@ -205,7 +205,7 @@ function play(guild, song) {
 		return; 
 	} 
 	console.log(serverQueue.songs);
- 	const checked = client.emojis.find("name", "checked");
+ 	const ayy = client.emojis.find("name", "320");
 	const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
 		.on('end', reason => { 
 			if (reason === 'Stream is not generating quickly enough.') console.log('Song ended.');
@@ -215,7 +215,7 @@ function play(guild, song) {
 		}) 
 		.on('error', error => console.error(error)); 
 	dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);  
-	serverQueue.textChannel.send(`${checked} Enqueued \`${song.title}\``);
+	serverQueue.textChannel.send(`${ayy} Enqueued \`${song.title}\``);
 }
 
 const adminprefix = "$vip"; 
