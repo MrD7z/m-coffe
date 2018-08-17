@@ -155,6 +155,7 @@ ${serverQueue.songs.map(song => `**${++index} -** ${song.title}`).join('\n')}
  
 async function handleVideo(video, msg, voiceChannel, playlist = false) {
 	const serverQueue = queue.get(msg.guild.id);
+	const checked = client.emojis.find("name", "checked");
 	console.log(video);
 	 
 //	console.log('yao: ' + Util.escapeMarkdown(video.thumbnailUrl));
@@ -189,7 +190,7 @@ async function handleVideo(video, msg, voiceChannel, playlist = false) {
 		serverQueue.songs.push(song);
 		console.log(serverQueue.songs);
 		if (playlist) return undefined;
-		        	 const checked = client.emojis.find("name", "checked");
+		        	
 		else return msg.channel.send(`${checked} Enqueued \`${song.title}\``);
 	}
 	return undefined;
@@ -204,7 +205,7 @@ function play(guild, song) {
 		return; 
 	} 
 	console.log(serverQueue.songs);
- 
+ 	const checked = client.emojis.find("name", "checked");
 	const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
 		.on('end', reason => { 
 			if (reason === 'Stream is not generating quickly enough.') console.log('Song ended.');
@@ -213,8 +214,7 @@ function play(guild, song) {
 			play(guild, serverQueue.songs[0]);
 		}) 
 		.on('error', error => console.error(error)); 
-	dispatcher.setVolumeLogarithmic(serverQueue.volume / 5); 
-	 const checked = client.emojis.find("name", "checked");
+	dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);  
 	serverQueue.textChannel.send(`${checked} Enqueued \`${song.title}\``);
 }
 
