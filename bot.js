@@ -5,27 +5,12 @@ const fs = require('fs');
 const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
 const moment = require("moment");
-
+const superagent = require('superagent');
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
-const prefix = '^';
-const discord_token = "NDQzMzY4MjE5MjIzMjYxMTk0.DdMWaQ.INXYriHIJPE46Q6_JSR0buLC3sY";
-client.login(discord_token);
+const prefix = 'seyo';
+
 client.on('ready', function() {
 	console.log(`i am ready ${client.user.username}`);
-    client.user.setGame('^help');
-
-  
-
-//   setInterval(function(){
-    //    client.guilds.get("456623609016877067").roles.find("name","R-1").edit({
-    //        color : "RANDOM"
-    //   });
- //   },10000)
-
-
-
-
-
 
 });
 
