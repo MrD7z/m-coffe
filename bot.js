@@ -7,18 +7,42 @@ const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
 const Canvas = require('canvas');
 const jimp = require('jimp');
+const superagent = require('superagent');
 const moment = require("moment");
 
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
 const prefix = '^';
-
+const discord_token = "NDQzMzY4MjE5MjIzMjYxMTk0.DdMWaQ.INXYriHIJPE46Q6_JSR0buLC3sY";
+client.login(discord_token);
 client.on('ready', function() {
 	console.log(`i am ready ${client.user.username}`);
+    client.user.setGame('^help');
+
+  
+
+//   setInterval(function(){
+    //    client.guilds.get("456623609016877067").roles.find("name","R-1").edit({
+    //        color : "RANDOM"
+    //   });
+ //   },10000)
+
+
+
+
+
+
 });
 
 
 
 
+
+
+/*
+////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\
+////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\
+////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\
+////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 var servers = [];
 var queue = [];
@@ -53,7 +77,7 @@ client.on('message', function(message) {
 
 	if (mess.startsWith(prefix + 'play')) {
 	  
-		if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
+		if (!message.member.voiceChannel) return ;
 		// if user is not insert the URL or song title
 		if (args.length == 0) {
 		
@@ -103,7 +127,7 @@ return;
 		}
 	}
 	else if (mess.startsWith(prefix + 'skip')) {
-		if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
+		if (!message.member.voiceChannel) return;
 		const skip = client.emojis.find("name", "skip");
 		message.channel.send(''+ skip +' skipped').then(() => {
 			skip_song(message);
@@ -112,40 +136,40 @@ return;
 		});
 	}
 	else if (message.content.startsWith(prefix + 'vol')) {
-		if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
+		if (!message.member.voiceChannel) return ;
 		// console.log(args)
-		if (args > 100) return message.channel.send('1 - 100 || **__لا أكثر ولا أقل__**')
-		if (args < 1) return message.channel.send('1 - 100 || **__لا أكثر ولا أقل__**')
+		if (args > 100) return message.channel.send('1 - 100 || لا أكثر ولا أقل')
+		if (args < 1) return message.channel.send('1 - 100 || لا أكثر ولا أقل')
 		dispatcher.setVolume(1 * args / 50);
 		message.channel.sendMessage(`:loud_sound: set the volume to ${dispatcher.volume*50}%`);
 	}
 	else if (mess.startsWith(prefix + 'stop')) {
-		if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
+		if (!message.member.voiceChannel) return ;
 			  const stop3 = client.emojis.find("name", "stop3");
 		message.channel.send(''+ stop3 +' stopped').then(() => {
 			dispatcher.pause();
 		});
 	}
 	else if (mess.startsWith(prefix + 'go')) {
-		if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
+		if (!message.member.voiceChannel) return ;
 		const success = client.emojis.find("name", "success");
 			message.channel.send(''+ success +' Ready to play audio in `' + voiceChannel.name + '`').then(() => {
 			dispatcher.resume();
 		});
 	}
 	else if (mess.startsWith(prefix + 'leave')) {
-		if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
+		if (!message.member.voiceChannel) return;
 		message.channel.send('');
 		var server = server = servers[message.guild.id];
 		if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
 	}
 	else if (mess.startsWith(prefix + 'come')) {
-		if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
+		if (!message.member.voiceChannel) return ;
 		message.member.voiceChannel.join().then(message.channel.send(''));
 	}
 	else if (mess.startsWith(prefix + 'play')) {
-		if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
-		if (isPlaying == false) return message.channel.send(':anger: || **__تم التوقيف__**');
+		if (!message.member.voiceChannel) return ;
+		if (isPlaying == false) return ;
         	const checked = client.emojis.find("name", "checked");
 			
 			
@@ -161,7 +185,7 @@ return;
 });
 
 function skip_song(message) {
-	if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
+	if (!message.member.voiceChannel) return ;
 	dispatcher.end();
 }
 
