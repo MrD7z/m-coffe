@@ -23,7 +23,7 @@ client.on('ready', () => {
     console.log(`in ${client.guilds.size} servers `)
     console.log(`${client.users.size}`)
 });
-const prefix = "$"
+const prefix = "seyo"
 client.on('message', async msg => { // eslint-disable-line
 	if (msg.author.bot) return undefined;
 	 
