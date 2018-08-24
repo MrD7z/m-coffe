@@ -11,22 +11,16 @@ const superagent = require('superagent');
 const moment = require("moment");
 
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
-const prefix = 'seyo';
-/*
-البكجآت
-npm install discord.js
-npm install ytdl-core
-npm install get-youtube-id
-npm install youtube-info
-npm install simple-youtube-api
-npm install queue
-*/
+const prefix = '^';
 
-client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
-    console.log(`in ${client.guilds.size} servers `)
-    console.log(`${client.users.size}`)
+client.on('ready', function() {
+	console.log(`i am ready ${client.user.username}`);
 });
+
+
+
+
+*/
 var servers = [];
 var queue = [];
 var guilds = [];
@@ -60,7 +54,7 @@ client.on('message', function(message) {
 
 	if (mess.startsWith(prefix + 'play')) {
 	  
-		if (!message.member.voiceChannel) return ;
+		if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
 		// if user is not insert the URL or song title
 		if (args.length == 0) {
 		
@@ -110,7 +104,7 @@ return;
 		}
 	}
 	else if (mess.startsWith(prefix + 'skip')) {
-		if (!message.member.voiceChannel) return;
+		if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
 		const skip = client.emojis.find("name", "skip");
 		message.channel.send(''+ skip +' skipped').then(() => {
 			skip_song(message);
@@ -119,7 +113,7 @@ return;
 		});
 	}
 	else if (message.content.startsWith(prefix + 'vol')) {
-		if (!message.member.voiceChannel) return ;
+		if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
 		// console.log(args)
 		if (args > 100) return message.channel.send('1 - 100 || **__لا أكثر ولا أقل__**')
 		if (args < 1) return message.channel.send('1 - 100 || **__لا أكثر ولا أقل__**')
@@ -127,31 +121,31 @@ return;
 		message.channel.sendMessage(`:loud_sound: set the volume to ${dispatcher.volume*50}%`);
 	}
 	else if (mess.startsWith(prefix + 'stop')) {
-		if (!message.member.voiceChannel) return ;
+		if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
 			  const stop3 = client.emojis.find("name", "stop3");
 		message.channel.send(''+ stop3 +' stopped').then(() => {
 			dispatcher.pause();
 		});
 	}
 	else if (mess.startsWith(prefix + 'go')) {
-		if (!message.member.voiceChannel) return ;
+		if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
 		const success = client.emojis.find("name", "success");
 			message.channel.send(''+ success +' Ready to play audio in `' + voiceChannel.name + '`').then(() => {
 			dispatcher.resume();
 		});
 	}
 	else if (mess.startsWith(prefix + 'leave')) {
-		if (!message.member.voiceChannel) return ;
+		if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
 		message.channel.send('');
 		var server = server = servers[message.guild.id];
 		if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
 	}
 	else if (mess.startsWith(prefix + 'come')) {
-		if (!message.member.voiceChannel) return ;
+		if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
 		message.member.voiceChannel.join().then(message.channel.send(''));
 	}
 	else if (mess.startsWith(prefix + 'play')) {
-		if (!message.member.voiceChannel) return ;
+		if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
 		if (isPlaying == false) return message.channel.send(':anger: || **__تم التوقيف__**');
         	const checked = client.emojis.find("name", "checked");
 			
@@ -168,7 +162,7 @@ return;
 });
 
 function skip_song(message) {
-	if (!message.member.voiceChannel) return;
+	if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
 	dispatcher.end();
 }
 
@@ -234,26 +228,5 @@ function search_video(query, cb) {
 function isYoutube(str) {
 	return str.toLowerCase().indexOf('youtube.com') > -1;
 }
- client.on('message', message => {
-     if (message.content === prefix +"help") {
-    const embed = new Discord.RichEmbed()
-     .setColor("RANDOM")
-     .addField(`**__أوامر البوت__**`,`
-	 **${prefix}play**
-	 امر تشغيل الأغنية , !شغل الرابط او اسم الأعنية
-	 **${prefix}skip**
-	 تغير الأغنية
-	 **${prefix}stop**
-	 ايقاف الأغنية
-	 **${prefix}go**
-     مواصلة الأغنية
-	 **${prefix}vol**
-	 مستوى الصوت 1-100
-	 **${prefix}leave**
-	 خروج البوت من الروم`)
-
-      message.channel.send({embed});
-	 }
-	});
 
 client.login(process.env.TOKEN);
